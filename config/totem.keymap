@@ -86,10 +86,10 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-              &kp Q       &kp W       &kp F        &kp P        &kp B        &kp J                 &kp L            &kp U        &kp Y       &kp SEMI
-              &mt LGUI A  &mt LALT R  &mt LCTRL S  &mt LSHFT T  &kp G        &kp M                 &mt RSHFT N      &mt RCTRL E  &mt RALT I  &mt RGUI O
-&kp CAPSLOCK  &kp Z       &kp X       &kp C        &kp D        &kp V        &kp K                 &kp H            &kp COMMA    &kp DOT     &kp FSLH    &kp SQT
-                                      &kp ESC      &lt 1 SPACE  &lt 2 TAB    &mt LEFT_SHIFT ENTER  &lt 3 BACKSPACE  &kp DELETE
+              &kp Q       &kp W       &kp F         &kp P        &kp B        &kp J        &kp L            &kp U         &kp Y       &kp SEMI
+              &mt LGUI A  &mt LALT R  &mt LCTRL S   &mt LSHFT T  &kp G        &kp M        &mt RSHFT N      &mt RCTRL E   &mt RALT I  &mt RGUI O
+&kp CAPSLOCK  &kp Z       &kp X       &kp C         &kp D        &kp V        &kp K        &kp H            &kp COMMA     &kp DOT     &kp FSLH    &kp SQT
+                                      &lt 3 ESCAPE  &lt 1 SPACE  &lt 2 TAB    &lt 5 ENTER  &lt 4 BACKSPACE  &lt 6 DELETE
             >;
         };
 
@@ -110,22 +110,46 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-        &kp EXCLAMATION  &kp AT_SIGN    &kp HASH        &kp DOLLAR            &kp PERCENT              &kp RBRC    &kp N7        &kp N8        &kp N9        &kp PLUS
-        &kp CARET        &kp AMPERSAND  &kp ASTERISK    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &kp MINUS   &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp EQUAL
-&trans  &kp GRAVE        &kp BACKSLASH  &kp C_SNAPSHOT  &kp LEFT_BRACKET      &kp RIGHT_BRACKET        &kp PERIOD  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp SLASH  &trans
-                                        &trans          &trans                &trans                   &trans      &mo 5         &kp NUMBER_0
+        &none         &kp LC(W)     &none             &none           &none                    &kp RBRC   &kp N7        &kp N8        &kp N9        &kp PLUS
+        &kp LEFT_WIN  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &kp RIGHT_PARENTHESIS    &kp MINUS  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp EQUAL
+&trans  &kp LC(Z)     &kp LC(X)     &kp LC(C)         &kp LG(D)       &kp LC(V)                &kp GRAVE  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH  &trans
+                                    &trans            &trans          &trans                   &trans     &trans        &kp NUMBER_0
             >;
         };
 
         sym {
             bindings = <
-        &trans        &trans        &trans            &trans          &trans       &kp LEFT_BRACE  &kp AMPERSAND         &kp ASTERISK           &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE
-        &kp LEFT_WIN  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &trans       &kp UNDERSCORE  &kp DOLLAR            &kp PERCENT            &kp CARET             &kp PLUS
+        &none         &kp LC(W)     &none             &none           &none        &kp LEFT_BRACE  &kp AMPERSAND         &kp ASTERISK           &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE
+        &kp LEFT_WIN  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &none        &kp UNDERSCORE  &kp DOLLAR            &kp PERCENT            &kp CARET             &kp PLUS
 &trans  &kp LC(Z)     &kp LC(X)     &kp LC(C)         &kp LG(D)       &kp LC(V)    &kp TILDE       &kp EXCLAMATION       &kp AT_SIGN            &kp HASH              &kp PIPE         &trans
                                     &trans            &trans          &trans       &trans          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
             >;
 
             label = "sym";
+        };
+
+        fun {
+            // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+
+            label = "FUN";
+
+            // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+            //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+            //             ┃   RESET   ┃ BT CLEAR  ┃  OUT TOG  ┃           ┃           ┃   ┃           ┃    F7     ┃    F8     ┃    F9     ┃    F12    ┃
+            //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+            //             ┃ BOOTLOAD  ┃ BT NEXT   ┃           ┃           ┃           ┃   ┃           ┃    F4     ┃    F5     ┃    F6     ┃    F11    ┃
+            // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+            // ┃           ┃           ┃ BT PREV   ┃           ┃           ┃           ┃   ┃           ┃    F1     ┃    F2     ┃    F3     ┃    F10    ┃           ┃
+            // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+            //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
+            //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+
+            bindings = <
+        &sys_reset   &bt BT_CLR  &out OUT_TOG  &trans  &trans    &trans  &kp F7  &kp F8  &kp F9  &kp F12
+        &bootloader  &bt BT_NXT  &trans        &trans  &trans    &trans  &kp F4  &kp F5  &kp F6  &kp F11
+&trans  &trans       &bt BT_PRV  &trans        &trans  &trans    &trans  &kp F1  &kp F2  &kp F3  &kp F10  &trans
+                                 &trans        &trans  &trans    &trans  &trans  &trans
+            >;
         };
 
         navi {
@@ -148,7 +172,7 @@
        &msc SCRL_UP    &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &kp INSERT    &kp CARET     &kp PG_UP       &kp UP_ARROW    &kp PG_DN        &kp HOME
        &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &kp CAPS      &kp C_MUTE    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END
 &none  &none           &caps_word      &none           &sk LEFT_SHIFT   &none         &kp C_VOL_DN  &kp LS(TAB)     &kp INSERT      &kp TAB          &kp BSLH  &none
-                                       &none           &mo 5            &none         &none         &none           &none
+                                       &none           &mo 3            &none         &none         &none           &none
             >;
         };
 
@@ -163,28 +187,15 @@
             label = "mouse";
         };
 
-        adjust_layer {
-            // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-
-            label = "ADJ";
-
-            // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-            //             ┃   RESET   ┃ BT CLEAR  ┃  OUT TOG  ┃           ┃           ┃   ┃           ┃    F7     ┃    F8     ┃    F9     ┃    F12    ┃
-            //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-            //             ┃ BOOTLOAD  ┃ BT NEXT   ┃           ┃           ┃           ┃   ┃           ┃    F4     ┃    F5     ┃    F6     ┃    F11    ┃
-            // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
-            // ┃           ┃           ┃ BT PREV   ┃           ┃           ┃           ┃   ┃           ┃    F1     ┃    F2     ┃    F3     ┃    F10    ┃           ┃
-            // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-            //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
-            //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-
+        media {
             bindings = <
-        &sys_reset   &bt BT_CLR  &out OUT_TOG  &trans  &trans    &trans  &kp F7  &kp F8  &kp F9  &kp F12
-        &bootloader  &bt BT_NXT  &trans        &trans  &trans    &trans  &kp F4  &kp F5  &kp F6  &kp F11
-&trans  &trans       &bt BT_PRV  &trans        &trans  &trans    &trans  &kp F1  &kp F2  &kp F3  &kp F10  &trans
-                                 &trans        &trans  &trans    &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
+
+            label = "MEDIA";
         };
 
         // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
