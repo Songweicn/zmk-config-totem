@@ -54,7 +54,7 @@
 
         pgdn {
             bindings = <&kp PAGE_DOWN>;
-            key-positions = <18 19>;
+            key-positions = <18 17>;
             layers = <1>;
         };
     };
@@ -81,10 +81,10 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-         &kp Q  &kp W  &kp F                &kp P        &kp B        &kp J                 &kp L            &kp U                  &kp Y    &kp SINGLE_QUOTE
-         &kp A  &kp R  &kp S                &mt LSHFT T  &kp G        &kp M                 &mt RSHFT N      &kp E                  &kp I    &kp O
-&kp TAB  &kp Z  &kp X  &kp C                &kp D        &kp V        &kp K                 &kp H            &kp COMMA              &kp DOT  &kp FSLH          &kp SEMICOLON
-                       &mt LEFT_ALT ESCAPE  &lt 1 SPACE  &kp LCTRL    &mt LEFT_SHIFT ENTER  &lt 2 BACKSPACE  &mt LEFT_GUI CAPSLOCK
+         &kp Q           &kp W           &kp F               &kp P        &kp B        &kp J                 &kp L            &kp U                  &kp Y            &kp SINGLE_QUOTE
+         &mt LEFT_WIN A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LSHFT T  &kp G        &kp M                 &mt RSHFT N      &mt RIGHT_CONTROL E    &mt RIGHT_ALT I  &mt RIGHT_WIN O
+&kp TAB  &kp Z           &kp X           &kp C               &kp D        &kp V        &kp K                 &kp H            &kp COMMA              &kp DOT          &kp FSLH          &kp SEMICOLON
+                                         &lt 3 ESCAPE        &lt 1 SPACE  &kp LCTRL    &mt LEFT_SHIFT ENTER  &lt 2 BACKSPACE  &mt LEFT_GUI CAPSLOCK
             >;
         };
 
@@ -164,12 +164,5 @@
         // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
     };
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        fun {
-            if-layers = <1>;
-            then-layer = <2>;
-        };
-    };
+    conditional_layers { compatible = "zmk,conditional-layers"; };
 };
