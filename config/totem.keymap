@@ -59,23 +59,6 @@
         };
     };
 
-    macros {
-        gif: gif {
-            label = "giphy";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LSHFT>,
-                <&macro_tap>,
-                <&kp N2>,
-                <&macro_release>,
-                <&kp LSHFT>,
-                <&macro_tap>,
-                <&kp G &kp I &kp F>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -101,7 +84,7 @@
          &kp Q  &kp W  &kp F                &kp P        &kp B        &kp J                 &kp L            &kp U                  &kp Y    &kp SINGLE_QUOTE
          &kp A  &kp R  &kp S                &mt LSHFT T  &kp G        &kp M                 &mt RSHFT N      &kp E                  &kp I    &kp O
 &kp TAB  &kp Z  &kp X  &kp C                &kp D        &kp V        &kp K                 &kp H            &kp COMMA              &kp DOT  &kp FSLH          &kp SEMICOLON
-                       &mt LEFT_ALT ESCAPE  &lt 1 SPACE  &kp LCTRL    &mt LEFT_SHIFT ENTER  &lt 2 BACKSPACE  &mt LEFT_ALT CAPSLOCK
+                       &mt LEFT_ALT ESCAPE  &lt 1 SPACE  &kp LCTRL    &mt LEFT_SHIFT ENTER  &lt 2 BACKSPACE  &mt LEFT_GUI CAPSLOCK
             >;
         };
 
@@ -124,7 +107,7 @@
             bindings = <
            &kp EXCL       &kp AT        &kp HASH      &kp DOLLAR        &kp PERCENT          &kp CARET     &kp AMPERSAND  &kp STAR      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
            &kp NUMBER_1   &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4      &kp NUMBER_5         &kp NUMBER_6  &kp NUMBER_7   &kp NUMBER_8  &kp NUMBER_9          &kp NUMBER_0
-&kp GRAVE  &kp BACKSLASH  &trans        &trans        &kp LEFT_BRACKET  &kp RIGHT_BRACKET    &kp DOT       &kp MINUS      &kp EQUAL     &kp UNDERSCORE        &kp PLUS               &kp PERIOD
+&kp GRAVE  &kp BACKSLASH  &trans        &trans        &kp LEFT_BRACKET  &kp RIGHT_BRACKET    &kp EQUAL     &kp MINUS      &trans        &trans                &trans                 &trans
                                         &trans        &trans            &trans               &trans        &trans         &trans
             >;
         };
