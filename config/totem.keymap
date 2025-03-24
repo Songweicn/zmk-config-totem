@@ -54,7 +54,7 @@
 
         pgdn {
             bindings = <&kp PAGE_DOWN>;
-            key-positions = <17 18>;
+            key-positions = <18 19>;
             layers = <1>;
         };
     };
