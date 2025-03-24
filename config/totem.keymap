@@ -134,10 +134,10 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-        &kp ESCAPE  &kp HOME        &mmv MOVE_UP    &kp END          &none     &none   &kp HOME        &kp UP_ARROW    &kp END          &kp PG_UP
-        &kp TAB     &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none     &none   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_DN
-&trans  &trans      &trans          &trans          &trans           &trans    &none   &none           &none           &none            &none      &trans
-                                    &trans          &trans           &trans    &trans  &trans          &trans
+        &kp ESCAPE  &trans          &mmv MOVE_UP    &trans           &none        &none   &kp HOME        &kp UP_ARROW    &kp END          &kp PG_UP
+        &kp TAB     &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none        &none   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_DN
+&trans  &trans      &trans          &trans          &trans           &trans       &none   &none           &none           &none            &none      &trans
+                                    &mkp MB2        &trans           &mkp LCLK    &trans  &trans          &trans
             >;
         };
 
