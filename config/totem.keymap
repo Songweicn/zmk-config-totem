@@ -80,14 +80,14 @@
           &kp Q               &kp W           &kp F           &kp P        &kp B           &kp J           &kp L            &kp U              &kp Y            &kp SINGLE_QUOTE
           &mt LEFT_CONTROL A  &mt LEFT_ALT R  &mt LEFT_WIN S  &mt LSHFT T  &kp G           &kp M           &mt RSHFT N      &mt RIGHT_GUI E    &mt RIGHT_ALT I  &mt RIGHT_CONTROL O
 &kp CAPS  &kp Z               &kp X           &kp C           &kp D        &kp V           &kp K           &kp H            &kp COMMA          &kp DOT          &kp FSLH             &kp SEMICOLON
-                                              &sk LEFT_ALT    &lt 2 SPACE  &sk LEFT_GUI    &sk LEFT_SHIFT  &lt 1 BACKSPACE  &sk RIGHT_CONTROL
+                                              &sk LEFT_ALT    &lt 3 SPACE  &sk LEFT_GUI    &sk LEFT_SHIFT  &lt 1 BACKSPACE  &sk RIGHT_CONTROL
             >;
         };
 
-        navi {
+        num {
             // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 
-            label = "navi";
+            label = "num";
 
             // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
             //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
@@ -101,10 +101,20 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-           &kp GRAVE         &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0         &kp ESC        &kp HOME        &kp UP_ARROW    &kp END          &kp PG_UP
-           &kp MINUS         &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PERIOD           &kp CAPS       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_DN
-&kp EQUAL  &kp LEFT_BRACKET  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp RIGHT_BRACKET    &kp BACKSLASH  &kp TAB         &kp COMMA       &kp PERIOD       &kp SLASH  &kp SEMICOLON
-                                           &trans        &trans        &trans               &trans         &trans          &trans
+           &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &none   &none            &none          &none          &none
+           &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL            &none   &kp RIGHT_SHIFT  &kp RIGHT_GUI  &kp RIGHT_ALT  &kp RIGHT_CONTROL
+&kp EQUAL  &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH        &none   &none            &none          &none          &none              &none
+                                           &kp PERIOD    &kp NUMBER_0  &trans               &trans  &trans           &trans
+            >;
+        };
+
+        sym {
+            label = "sym";
+            bindings = <
+           &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &none   &none            &none          &none          &none
+           &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL            &none   &kp RIGHT_SHIFT  &kp RIGHT_GUI  &kp RIGHT_ALT  &kp RIGHT_CONTROL
+&kp EQUAL  &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH        &none   &none            &none          &none          &none              &none
+                                           &kp PERIOD    &kp NUMBER_0  &trans               &trans  &trans           &trans
             >;
         };
 
@@ -129,6 +139,16 @@
              &bt BT_NXT      &kp F4  &kp F5  &kp F6  &kp F11    &trans  &trans  &trans  &trans  &trans
 &bootloader  &bt BT_CLR_ALL  &kp F1  &kp F2  &kp F3  &kp F10    &trans  &trans  &trans  &trans  &trans  &trans
                                      &trans  &trans  &trans     &trans  &trans  &trans
+            >;
+        };
+
+        nav {
+            label = "nav";
+            bindings = <
+           &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &kp ESC        &kp HOME        &kp UP_ARROW    &kp END          &kp PG_UP
+           &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL            &kp CAPS       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_DN
+&kp EQUAL  &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH        &kp BACKSLASH  &kp TAB         &kp COMMA       &kp PERIOD       &kp SLASH  &kp SEMICOLON
+                                           &kp PERIOD    &kp NUMBER_0  &trans               &trans         &trans          &trans
             >;
         };
 
