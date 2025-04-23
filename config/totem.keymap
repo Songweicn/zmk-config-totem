@@ -14,6 +14,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define BASE 0
 #define NAV  1
@@ -56,6 +57,18 @@
         };
     };
 
+    behaviors {
+        mt_safe: mt_safe {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_SAFE";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            flavor = "tap-preferred";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -78,11 +91,53 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-          &kp Q           &kp W           &kp F               &kp P        &kp B            &kp J        &kp L            &kp U                &kp Y            &kp SINGLE_QUOTE
-          &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LSHFT T  &kp G            &kp M        &mt RSHFT N      &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O
-&kp CAPS  &kp Z           &kp X           &kp C               &kp D        &kp V            &kp K        &kp H            &kp COMMA            &kp DOT          &kp FSLH          &kp SEMICOLON
-                                          &lt 5 ESCAPE        &lt 4 SPACE  &mt LCTRL TAB    &lt 2 ENTER  &lt 1 BACKSPACE  &lt 3 DELETE
+          &kp Q                &kp W           &kp F               &kp P        &kp B        &kp J        &kp L            &kp U                &kp Y            &kp SINGLE_QUOTE
+          &mt_safe LEFT_WIN A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LSHFT T  &kp G        &kp M        &mt RSHFT N      &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt_safe RIGHT_GUI O
+&kp CAPS  &lt 8 Z              &kp X           &kp C               &kp D        &kp V        &kp K        &kp H            &kp COMMA            &kp DOT          &lt 8 SLASH           &kp SEMICOLON
+                                               &lt 4 ESCAPE        &lt 2 SPACE  &lt 3 TAB    &lt 6 ENTER  &lt 5 BACKSPACE  &lt 7 DELETE
             >;
+        };
+
+        extra {
+            bindings = <
+           &kp Q                &kp W           &kp E               &kp R             &kp T     &kp Y   &kp U              &kp I                &kp O            &kp P
+           &mt_safe LEFT_WIN A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &kp G     &kp H   &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt_safe SEMI O
+&kp LSHFT  &lt 8 Z              &kp X           &kp C               &kp V             &kp B     &kp N   &kp M              &kp COMMA            &kp DOT          &lt 8 SLASH      &kp RSHFT
+                                                &trans              &trans            &trans    &trans  &trans             &trans
+            >;
+
+            label = "extra";
+        };
+
+        nav {
+            label = "nav";
+            bindings = <
+        &none         &none          &to 1             &to 0           &none     &kp K_REDO  &kp K_PASTE     &kp K_COPY      &kp K_CUT     &kp K_UNDO
+        &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none     &kp CAPS    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
+&trans  &none         &sk RIGHT_ALT  &to 5             &tog 2          &none     &kp INSERT  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans
+                                     &trans            &trans          &trans    &trans      &trans          &trans
+            >;
+        };
+
+        mouse {
+            label = "mouse";
+            bindings = <
+        &none         &none          &to 1             &to 0           &none     &kp K_REDO  &kp K_PASTE     &kp K_COPY      &kp K_CUT     &kp K_UNDO
+        &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none     &kp CAPS    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
+&trans  &none         &sk RIGHT_ALT  &to 6             &tog 3          &none     &kp INSERT  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans
+                                     &trans            &trans          &trans    &trans      &trans          &trans
+            >;
+        };
+
+        media {
+            bindings = <
+        &bootloader   &sys_reset     &to 1             &to 0           &none    &kp LC(Y)     &kp LC(V)         &kp LC(C)          &kp LC(X)        &kp LC(Z)
+        &sk LEFT_WIN  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none    &none         &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kt C_NEXT
+&trans  &none         &sk RIGHT_ALT  &to 7             &tog 4          &none    &out OUT_TOG  &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3  &trans
+                                     &trans            &none           &none    &kp K_STOP    &kp K_PLAY_PAUSE  &kp K_MUTE
+            >;
+
+            label = "media";
         };
 
         num {
@@ -102,20 +157,20 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-       &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &none  &none            &none              &none          &sys_reset
-       &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL            &none  &sk RIGHT_SHIFT  &sk RIGHT_CONTROL  &sk RIGHT_ALT  &sk RIGHT_GUI
-&none  &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH        &none  &none            &none              &none          &none          &none
-                                       &kp PERIOD    &kp NUMBER_0  &kp MINUS            &none  &trans           &none
+       &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &none  &to 0           &to 1             &none          &none
+       &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL            &none  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_WIN
+&none  &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH        &none  &tog 5          &to 2             &sk RIGHT_ALT  &none         &none
+                                       &kp PERIOD    &kp NUMBER_0  &kp MINUS            &none  &trans          &none
             >;
         };
 
         sym {
             label = "sym";
             bindings = <
-       &kp LEFT_BRACE  &kp AMPERSAND    &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE    &none   &none            &none              &none          &sys_reset
-       &kp COLON       &kp DOLLAR       &kp PERCENT   &kp LCTRL             &kp PLUS           &none   &sk RIGHT_SHIFT  &sk RIGHT_CONTROL  &sk RIGHT_ALT  &sk RIGHT_GUI
-&none  &kp TILDE       &kp EXCLAMATION  &kp AT_SIGN   &kp POUND             &kp PIPE           &none   &none            &none              &none          &none          &none
-                                        &kp PERIOD    &kp NUMBER_0          &kp MINUS          &trans  &none            &none
+       &kp LEFT_BRACE  &kp AMPERSAND    &kp ASTERISK          &kp LEFT_PARENTHESIS   &kp RIGHT_BRACE    &none   &to 0           &to 1             &none          &none
+       &kp COLON       &kp DOLLAR       &kp PERCENT           &kp LCTRL              &kp PLUS           &none   &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI
+&none  &kp TILDE       &kp EXCLAMATION  &kp AT_SIGN           &kp POUND              &kp PIPE           &none   &tog 6          &to 3             &sk RIGHT_ALT  &none         &none
+                                        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UNDERSCORE     &trans  &none           &none
             >;
         };
 
@@ -136,32 +191,22 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-        &kp F12  &kp F7  &kp F8  &kp F9  &kp SCROLLLOCK     &none  &none            &none              &none          &none
-        &kp F11  &kp F4  &kp F5  &kp F6  &kp SCROLLLOCK     &none  &sk RIGHT_SHIFT  &sk RIGHT_CONTROL  &sk RIGHT_ALT  &sk RIGHT_GUI
-&trans  &kp F10  &kp F1  &kp F2  &kp F3  &kp PAUSE_BREAK    &none  &none            &none              &none          &none          &trans
-                         &trans  &trans  &trans             &none  &none            &trans
+        &kp F12  &kp F7  &kp F8      &kp F9     &kp SCROLLLOCK     &none  &to 0           &to 1             &sys_reset     &bootloader
+        &kp F11  &kp F4  &kp F5      &kp F6     &kp SCROLLLOCK     &none  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI
+&trans  &kp F10  &kp F1  &kp F2      &kp F3     &kp PAUSE_BREAK    &none  &tog 7          &to 4             &sk RIGHT_ALT  &none         &trans
+                         &kp ESCAPE  &kp SPACE  &kp TAB            &none  &none           &trans
             >;
         };
 
-        nav {
-            label = "nav";
+        button {
             bindings = <
-        &none         &none         &none             &none           &none     &kp K_REDO  &kp K_PASTE     &kp K_COPY      &kp K_CUT     &kp K_UNDO
-        &sk LEFT_GUI  &sk LEFT_ALT  &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none     &kp CAPS    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
-&trans  &none         &none         &none             &none           &none     &kp INSERT  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans
-                                    &trans            &trans          &trans    &trans      &trans          &trans
-            >;
-        };
-
-        media {
-            bindings = <
-        &bt BT_PRV  &bt BT_NXT  &bt BT_CLR  &out OUT_TOG  &none    &kp K_REDO  &kp K_PASTE       &kp K_COPY         &kp K_CUT      &kp K_UNDO
-        &kp A       &kp S       &kp D       &kp F         &none    &none       &sk RIGHT_SHIFT   &sk RIGHT_CONTROL  &sk RIGHT_ALT  &sk RIGHT_GUI
-&trans  &none       &none       &none       &none         &none    &none       &none             &none              &none          &none          &trans
-                                &trans      &none         &none    &kp K_STOP  &kp K_PLAY_PAUSE  &kp K_MUTE
+        &trans     &trans     &trans     &trans     &trans       &trans     &trans     &trans     &trans     &trans
+        &trans     &trans     &trans     &trans     &trans       &trans     &trans     &trans     &trans     &trans
+&trans  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(Y)    &kp LC(Y)  &kt LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)  &trans
+                              &mkp MCLK  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK  &mkp MCLK
             >;
 
-            label = "media";
+            label = "button";
         };
 
         // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
