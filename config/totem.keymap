@@ -1,3 +1,15 @@
+//
+//                                                        ▀▀▀▀▀     ▀▀▀▀▀          ▀▀█▀▀
+//                                                        ▄▀▀▀▄  ▄  ▄▀▀▀▄  ▄  ▄▀▀▀▄  █  ▄▀▀▀▄
+//                                                        █   █  █  █   █  █  █   █  █  █   █
+//                                                         ▀▀▀   █   ▀▀▀   █   ▀▀▀   ▀   ▀▀▀
+//                                                               █      ▄▄▄█▄▄▄    █   █  
+//                                                               ▀      █  █  █     █▄█
+//                                                             ▀▀▀▀▀    █  █  █      ▀
+//                                                                      ▀  ▀  ▀
+//
+// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -34,12 +46,12 @@
             bindings = <&tog 0>;
         };
 
-        combo_pgup {
+        pgup {
             bindings = <&kp PG_UP>;
             key-positions = <16 17>;
         };
 
-        combo_pgdn {
+        pgdn {
             bindings = <&kp PAGE_DOWN>;
             key-positions = <18 17>;
         };
@@ -55,42 +67,29 @@
             tapping-term-ms = <300>;
             flavor = "tap-preferred";
         };
-
-        td_boot: td_boot {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_BOOT";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;  // 可自定义双击时限
-            bindings = <&bootloader>;
-        };
-
-        td_reset: td_reset {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_RESET";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;
-            bindings = <&sys_reset>;
-        };
-
-        // USB/BLE 切换行为
-
-        out_usb_ble: out_usb_ble {
-            compatible = "zmk,behavior-hold-tap";
-            label = "OUT_USB_BLE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>; // 可按需调整
-            flavor = "tap-preferred";
-            bindings = <&out OUT_USB>, <&out OUT_BLE>;
-        };
-
-        // Bluetooth profile 0 ~ 3 选择 / 清除
     };
 
     keymap {
         compatible = "zmk,keymap";
 
+        // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+
         base {
+            // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+
             label = "BASE";
+
+            // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+            //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+            //             ┃     Q     ┃     W     ┃     F     ┃     P     ┃     G     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     ;     ┃
+            //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+            //             ┃     A     ┃     R     ┃     S     ┃     T     ┃     D     ┃   ┃     H     ┃     N     ┃     E     ┃     I     ┃     O     ┃
+            // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+            // ┃     Q     ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     K     ┃     M     ┃     ,     ┃     .     ┃     /     ┃     \     ┃
+            // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+            //                                     ┃    DEL    ┃    TAB    ┃    SPC    ┃   ┃   ENTER   ┃           ┃   BSPC    ┃
+            //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+
             bindings = <
           &kp Q                &kp W           &kp F               &kp P        &kp B        &kp J        &kp L            &kp U                &kp Y            &kp SINGLE_QUOTE
           &mt_safe LEFT_WIN A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LSHFT T  &kp G        &kp M        &mt RSHFT N      &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt_safe RIGHT_GUI O
@@ -132,17 +131,31 @@
 
         media {
             bindings = <
-        &td_boot      &td_reset      &to 1             &to 0           &none    &kp LC(Y)                     &kp LC(V)         &kp LC(C)          &kp LC(X)        &kp LC(Z)
-        &sk LEFT_WIN  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none    &out_usb_ble OUT_BLE OUT_USB  &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kt C_NEXT
-&trans  &none         &sk RIGHT_ALT  &to 7             &tog 4          &none    &bt BT_CLR                    &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3  &trans
-                                     &trans            &none           &none    &kp K_STOP                    &kp K_PLAY_PAUSE  &kp C_MUTE
+        &bootloader   &sys_reset     &to 1             &to 0           &none    &kp LC(Y)     &kp LC(V)         &kp LC(C)          &kp LC(X)        &kp LC(Z)
+        &sk LEFT_WIN  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none    &none         &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kt C_NEXT
+&trans  &none         &sk RIGHT_ALT  &to 7             &tog 4          &none    &out OUT_TOG  &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3  &trans
+                                     &trans            &none           &none    &kp K_STOP    &kp K_PLAY_PAUSE  &kp C_MUTE
             >;
 
             label = "media";
         };
 
         num {
+            // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+
             label = "num";
+
+            // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+            //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+            //             ┃     !     ┃     @     ┃     #     ┃     $     ┃     %     ┃   ┃     ˆ     ┃     &     ┃     Ü     ┃     '     ┃     "     ┃
+            //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+            //             ┃     Ä     ┃           ┃    SZ     ┃           ┃           ┃   ┃   MUTE    ┃   YEN     ┃   EURO    ┃  POUND    ┃     Ö     ┃
+            // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+            // ┃           ┃  EMAIL1   ┃  EMAIL2   ┃           ┃           ┃           ┃   ┃   VOL-    ┃   VOL+    ┃   LAST    ┃   NEXT    ┃     \     ┃           ┃
+            // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+            //                                     ┃           ┃    GIF    ┃    ADJ    ┃   ┃           ┃           ┃           ┃
+            //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+
             bindings = <
        &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &none  &to 0           &to 1             &none          &none
        &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL            &none  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_WIN
@@ -162,9 +175,23 @@
         };
 
         fun {
+            // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+
             label = "FUN";
+
+            // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+            //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+            //             ┃   RESET   ┃ BT CLEAR  ┃  OUT TOG  ┃           ┃           ┃   ┃           ┃    F7     ┃    F8     ┃    F9     ┃    F12    ┃
+            //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+            //             ┃ BOOTLOAD  ┃ BT NEXT   ┃           ┃           ┃           ┃   ┃           ┃    F4     ┃    F5     ┃    F6     ┃    F11    ┃
+            // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+            // ┃           ┃           ┃ BT PREV   ┃           ┃           ┃           ┃   ┃           ┃    F1     ┃    F2     ┃    F3     ┃    F10    ┃           ┃
+            // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+            //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
+            //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+
             bindings = <
-        &kp F12  &kp F7  &kp F8      &kp F9     &kp SCROLLLOCK     &none  &to 0           &to 1             &td_reset      &td_boot
+        &kp F12  &kp F7  &kp F8      &kp F9     &kp SCROLLLOCK     &none  &to 0           &to 1             &sys_reset     &bootloader
         &kp F11  &kp F4  &kp F5      &kp F6     &kp SCROLLLOCK     &none  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI
 &trans  &kp F10  &kp F1  &kp F2      &kp F3     &kp PAUSE_BREAK    &none  &tog 7          &to 4             &sk RIGHT_ALT  &none         &trans
                          &kp ESCAPE  &kp SPACE  &kp TAB            &none  &none           &trans
@@ -181,6 +208,9 @@
 
             label = "button";
         };
+
+        // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+        // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
     };
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
