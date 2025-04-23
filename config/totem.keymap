@@ -112,7 +112,7 @@
         nav {
             label = "nav";
             bindings = <
-        &none         &none          &to 1             &to 0           &none     &kp K_REDO  &kp K_PASTE     &kp K_COPY      &kp K_CUT     &kp K_UNDO
+        &none         &none          &to 1             &to 0           &none     &kp LC(Y)   &kp LC(V)       &kp LC(C)       &kp LC(X)     &kp LC(Z)
         &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none     &kp CAPS    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
 &trans  &none         &sk RIGHT_ALT  &to 5             &tog 2          &none     &kp INSERT  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans
                                      &trans            &trans          &trans    &trans      &trans          &trans
@@ -122,7 +122,7 @@
         mouse {
             label = "mouse";
             bindings = <
-        &none         &none          &to 1             &to 0           &none     &kp K_REDO  &kp K_PASTE     &kp K_COPY      &kp K_CUT     &kp K_UNDO
+        &none         &none          &to 1             &to 0           &none     &kp LC(Y)   &kp LC(V)       &kp LC(C)       &kp LC(X)     &kp LC(Z)
         &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none     &kp CAPS    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
 &trans  &none         &sk RIGHT_ALT  &to 6             &tog 3          &none     &kp INSERT  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans
                                      &trans            &trans          &trans    &trans      &trans          &trans
@@ -134,7 +134,7 @@
         &bootloader   &sys_reset     &to 1             &to 0           &none    &kp LC(Y)     &kp LC(V)         &kp LC(C)          &kp LC(X)        &kp LC(Z)
         &sk LEFT_WIN  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none    &none         &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kt C_NEXT
 &trans  &none         &sk RIGHT_ALT  &to 7             &tog 4          &none    &out OUT_TOG  &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3  &trans
-                                     &trans            &none           &none    &kp K_STOP    &kp K_PLAY_PAUSE  &kp K_MUTE
+                                     &trans            &none           &none    &kp K_STOP    &kp K_PLAY_PAUSE  &kp C_MUTE
             >;
 
             label = "media";
@@ -200,10 +200,10 @@
 
         button {
             bindings = <
-        &trans     &trans     &trans     &trans     &trans       &trans     &trans     &trans     &trans     &trans
-        &trans     &trans     &trans     &trans     &trans       &trans     &trans     &trans     &trans     &trans
-&trans  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(Y)    &kp LC(Y)  &kt LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)  &trans
-                              &mkp MCLK  &mkp LCLK  &mkp RCLK    &mkp RCLK  &mkp LCLK  &mkp MCLK
+        &kp LC(Z)     &kp LC(X)     &kp LC(C)         &kp LC(V)       &kp LC(Y)    &kp LC(Y)  &kp LC(V)        &kp LC(C)          &kp LC(X)      &kp LC(Z)
+        &sk LEFT_GUI  &sk LEFT_ALT  &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none        &none      &sk RIGHT_SHIFT  &sk RIGHT_CONTROL  &sk RIGHT_ALT  &sk RIGHT_GUI
+&trans  &kp LC(Z)     &kp LC(X)     &kp LC(C)         &kp LC(V)       &kp LC(Y)    &kp LC(Y)  &kt LC(V)        &kp LC(C)          &kp LC(X)      &kp LC(Z)      &trans
+                                    &mkp MCLK         &mkp LCLK       &mkp RCLK    &mkp RCLK  &mkp LCLK        &mkp MCLK
             >;
 
             label = "button";
