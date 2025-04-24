@@ -24,10 +24,10 @@
 #define TVP2 5
 
 &mt {
-    quick-tap-ms = <100>;
+    quick-tap-ms = <175>;
     global-quick-tap;
-    flavor = "tap-preferred";
-    tapping-term-ms = <170>;
+    retro-tap;
+    hold-trigger-key-positions = <32 33 34 10 11 12 13 16 17 18 19>;
 };
 
 / {
@@ -57,18 +57,6 @@
         };
     };
 
-    behaviors {
-        mt_safe: mt_safe {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MT_SAFE";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            flavor = "tap-preferred";
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -91,19 +79,19 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-          &kp Q                &kp W           &kp F               &kp P        &kp B        &kp J        &kp L            &kp U                &kp Y            &kp SINGLE_QUOTE
-          &mt_safe LEFT_WIN A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LSHFT T  &kp G        &kp M        &mt RSHFT N      &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt_safe RIGHT_GUI O
-&kp CAPS  &lt 8 Z              &kp X           &kp C               &kp D        &kp V        &kp K        &kp H            &kp COMMA            &kp DOT          &lt 8 SLASH           &kp SEMICOLON
-                                               &lt 4 ESCAPE        &lt 2 SPACE  &lt 3 TAB    &lt 6 ENTER  &lt 5 BACKSPACE  &lt 7 DELETE
+          &kp Q           &kp W           &kp F               &kp P        &kp B        &kp J        &kp L            &kp U                &kp Y            &kp SINGLE_QUOTE
+          &mt LEFT_WIN A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LSHFT T  &kp G        &kp M        &mt RSHFT N      &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O
+&kp CAPS  &kp Z           &kp X           &kp C               &kp D        &kp V        &kp K        &kp H            &kp COMMA            &kp DOT          &kp SLASH         &kp SEMICOLON
+                                          &lt 4 ESCAPE        &lt 2 SPACE  &lt 3 TAB    &lt 6 ENTER  &lt 5 BACKSPACE  &lt 7 DELETE
             >;
         };
 
         extra {
             bindings = <
-           &kp Q                &kp W           &kp E               &kp R             &kp T     &kp Y   &kp U              &kp I                &kp O            &kp P
-           &mt_safe LEFT_WIN A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &kp G     &kp H   &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt_safe SEMI O
-&kp LSHFT  &lt 8 Z              &kp X           &kp C               &kp V             &kp B     &kp N   &kp M              &kp COMMA            &kp DOT          &lt 8 SLASH      &kp RSHFT
-                                                &trans              &trans            &trans    &trans  &trans             &trans
+           &kp Q           &kp W           &kp E               &kp R             &kp T     &kp Y   &kp U             &kp I               &kp O           &kp P
+           &mt LEFT_WIN A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &kp G     &kp H   &mt LEFT_SHIFT J  &mt LEFT_CONTROL K  &mt LEFT_ALT L  &mt LEFT_GUI O
+&kp LSHFT  &kp Z           &kp X           &kp C               &kp V             &kp B     &kp N   &kp M             &kp COMMA           &kp DOT         &kp SLASH       &kp RSHFT
+                                           &trans              &trans            &trans    &trans  &trans            &trans
             >;
 
             label = "extra";
@@ -123,9 +111,9 @@
             label = "mouse";
             bindings = <
         &none         &none          &to 1             &to 0           &none     &kp LC(Y)   &kp LC(V)       &kp LC(C)       &kp LC(X)     &kp LC(Z)
-        &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none     &kp CAPS    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
-&trans  &none         &sk RIGHT_ALT  &to 6             &tog 3          &none     &kp INSERT  &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans
-                                     &trans            &trans          &trans    &trans      &trans          &trans
+        &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none     &kp CAPS    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT
+&trans  &none         &sk RIGHT_ALT  &to 6             &tog 3          &none     &kp INSERT  &none           &none           &none         &none            &trans
+                                     &trans            &trans          &trans    &mkp RCLK   &mkp LCLK       &mkp MCLK
             >;
         };
 
@@ -134,7 +122,7 @@
         &bootloader   &sys_reset     &to 1             &to 0           &none    &kp LC(Y)     &kp LC(V)         &kp LC(C)          &kp LC(X)        &kp LC(Z)
         &sk LEFT_WIN  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none    &out OUT_TOG  &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kt C_NEXT
 &trans  &none         &sk RIGHT_ALT  &to 7             &tog 4          &none    &bt BT_CLR    &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3  &trans
-                                     &trans            &none           &none    &kp K_STOP    &kp K_PLAY_PAUSE  &kp C_MUTE
+                                     &trans            &none           &none    &kp C_STOP    &kp C_PLAY_PAUSE  &kp C_MUTE
             >;
 
             label = "media";
@@ -196,17 +184,6 @@
 &trans  &kp F10  &kp F1  &kp F2      &kp F3     &kp PAUSE_BREAK    &none  &tog 7          &to 4             &sk RIGHT_ALT  &none         &trans
                          &kp ESCAPE  &kp SPACE  &kp TAB            &none  &none           &trans
             >;
-        };
-
-        button {
-            bindings = <
-        &kp LC(Z)     &kp LC(X)     &kp LC(C)         &kp LC(V)       &kp LC(Y)    &kp LC(Y)  &kp LC(V)        &kp LC(C)          &kp LC(X)      &kp LC(Z)
-        &sk LEFT_GUI  &sk LEFT_ALT  &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none        &none      &sk RIGHT_SHIFT  &sk RIGHT_CONTROL  &sk RIGHT_ALT  &sk RIGHT_GUI
-&trans  &kp LC(Z)     &kp LC(X)     &kp LC(C)         &kp LC(V)       &kp LC(Y)    &kp LC(Y)  &kt LC(V)        &kp LC(C)          &kp LC(X)      &kp LC(Z)      &trans
-                                    &mkp MCLK         &mkp LCLK       &mkp RCLK    &mkp RCLK  &mkp LCLK        &mkp MCLK
-            >;
-
-            label = "button";
         };
 
         // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
