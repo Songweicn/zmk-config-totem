@@ -24,11 +24,12 @@
 #define TVP2 5
 
 &mt {
-    quick-tap-ms = <175>;
+    quick-tap-ms = <100>;
     global-quick-tap;
     retro-tap;
     hold-trigger-key-positions = <32 33 34 10 19>;
     require-prior-idle-ms = <150>;
+    tapping-term-ms = <175>;
 };
 
 / {
@@ -90,7 +91,7 @@
             label = "nav";
             bindings = <
         &none         &none          &to 8             &to 0           &none     &kp INSERT  &kp HOME        &kp UP_ARROW    &kp END          &kp PAGE_UP
-        &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none     &kp CAPS    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PAGE_DOWN
+        &kp LEFT_GUI  &kp LEFT_ALT   &kp LEFT_CONTROL  &kp LEFT_SHIFT  &none     &kp CAPS    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PAGE_DOWN
 &trans  &none         &sk RIGHT_ALT  &to 4             &tog 1          &none     &kp LC(Y)   &kp LC(V)       &kp LC(C)       &kp LC(X)        &kp LC(Z)      &trans
                                      &trans            &trans          &trans    &trans      &trans          &trans
             >;
@@ -100,7 +101,7 @@
             label = "mouse";
             bindings = <
         &none         &none          &to 8             &to 0           &none     &kp INSERT  &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &msc SCRL_UP
-        &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none     &kp CAPS    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN
+        &kp LEFT_GUI  &kp LEFT_ALT   &kp LEFT_CONTROL  &kp LEFT_SHIFT  &none     &kp CAPS    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN
 &trans  &none         &sk RIGHT_ALT  &to 5             &tog 2          &none     &kp LC(Y)   &kp LC(V)       &kp LC(C)       &kp LC(X)        &kp LC(Z)       &trans
                                      &trans            &trans          &trans    &mkp RCLK   &mkp LCLK       &mkp MCLK
             >;
@@ -109,7 +110,7 @@
         media {
             bindings = <
         &bootloader   &sys_reset     &to 8             &to 0           &none    &out OUT_USB  &none             &kp C_VOLUME_UP    &none         &bt BT_PRV
-        &sk LEFT_WIN  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LEFT_SHIFT  &none    &out OUT_BLE  &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_NEXT    &bt BT_NXT
+        &kp LEFT_WIN  &kp LEFT_ALT   &kp LEFT_CONTROL  &kp LEFT_SHIFT  &none    &out OUT_BLE  &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_NEXT    &bt BT_NXT
 &trans  &none         &sk RIGHT_ALT  &to 6             &tog 3          &none    &bt BT_CLR    &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2  &bt BT_CLR_ALL  &trans
                                      &trans            &none           &none    &kp C_STOP    &kp C_PLAY_PAUSE  &kp C_MUTE
             >;
@@ -135,8 +136,8 @@
 
             bindings = <
        &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &none  &to 0           &to 8             &none          &none
-       &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL            &none  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_WIN
-&none  &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH        &none  &tog 4          &to 1             &sk RIGHT_ALT  &none         &none
+       &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL            &none  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_WIN
+&none  &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH        &none  &tog 4          &to 1             &kp RIGHT_ALT  &none         &none
                                        &kp PERIOD    &kp NUMBER_0  &kp MINUS            &none  &trans          &none
             >;
         };
@@ -145,8 +146,8 @@
             label = "sym";
             bindings = <
        &kp LEFT_BRACE  &kp AMPERSAND    &kp ASTERISK          &kp LEFT_PARENTHESIS   &kp RIGHT_BRACE    &none   &to 0           &to 8             &none          &none
-       &kp COLON       &kp DOLLAR       &kp PERCENT           &kp LCTRL              &kp PLUS           &none   &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI
-&none  &kp TILDE       &kp EXCLAMATION  &kp AT_SIGN           &kp POUND              &kp PIPE           &none   &tog 5          &to 2             &sk RIGHT_ALT  &none         &none
+       &kp COLON       &kp DOLLAR       &kp PERCENT           &kp LCTRL              &kp PLUS           &none   &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_GUI
+&none  &kp TILDE       &kp EXCLAMATION  &kp AT_SIGN           &kp POUND              &kp PIPE           &none   &tog 5          &to 2             &kp RIGHT_ALT  &none         &none
                                         &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UNDERSCORE     &trans  &none           &none
             >;
         };
@@ -169,8 +170,8 @@
 
             bindings = <
         &kp F12  &kp F7  &kp F8      &kp F9     &kp SCROLLLOCK     &none  &to 0           &to 8             &sys_reset     &bootloader
-        &kp F11  &kp F4  &kp F5      &kp F6     &kp SCROLLLOCK     &none  &sk LEFT_SHIFT  &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI
-&trans  &kp F10  &kp F1  &kp F2      &kp F3     &kp PAUSE_BREAK    &none  &tog 6          &to 3             &sk RIGHT_ALT  &none         &trans
+        &kp F11  &kp F4  &kp F5      &kp F6     &kp SCROLLLOCK     &none  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_GUI
+&trans  &kp F10  &kp F1  &kp F2      &kp F3     &kp PAUSE_BREAK    &none  &tog 6          &to 3             &kp RIGHT_ALT  &none         &trans
                          &kp ESCAPE  &kp SPACE  &kp TAB            &none  &none           &trans
             >;
         };
@@ -189,8 +190,8 @@
             label = "nav-mac";
             bindings = <
         &none             &none          &to 8         &to 0           &none     &kp INSERT  &kp HOME        &kp UP_ARROW    &kp END          &kp PAGE_UP
-        &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI  &sk LEFT_SHIFT  &none     &kp CAPS    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PAGE_DOWN
-&trans  &none             &sk RIGHT_ALT  &to 4         &tog 1          &none     &kp LC(Y)   &kp LC(V)       &kp LC(C)       &kp LC(X)        &kp LC(Z)      &trans
+        &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_GUI  &kp LEFT_SHIFT  &none     &kp CAPS    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PAGE_DOWN
+&trans  &none             &kp RIGHT_ALT  &to 4         &tog 1          &none     &kp LC(Y)   &kp LC(V)       &kp LC(C)       &kp LC(X)        &kp LC(Z)      &trans
                                          &trans        &trans          &trans    &trans      &trans          &trans
             >;
         };
@@ -199,8 +200,8 @@
             label = "mouse-mac";
             bindings = <
         &none             &none          &to 8         &to 0           &none     &kp INSERT  &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &msc SCRL_UP
-        &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI  &sk LEFT_SHIFT  &none     &kp CAPS    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN
-&trans  &none             &sk RIGHT_ALT  &to 5         &tog 2          &none     &kp LC(Y)   &kp LC(V)       &kp LC(C)       &kp LC(X)        &kp LC(Z)       &trans
+        &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_GUI  &kp LEFT_SHIFT  &none     &kp CAPS    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN
+&trans  &none             &kp RIGHT_ALT  &to 5         &tog 2          &none     &kp LC(Y)   &kp LC(V)       &kp LC(C)       &kp LC(X)        &kp LC(Z)       &trans
                                          &trans        &trans          &trans    &mkp RCLK   &mkp LCLK       &mkp MCLK
             >;
         };
@@ -209,8 +210,8 @@
             label = "media-mac";
             bindings = <
         &bootloader       &sys_reset     &to 8         &to 0           &none    &out OUT_USB  &none             &kp C_VOLUME_UP    &none         &bt BT_PRV
-        &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI  &sk LEFT_SHIFT  &none    &out OUT_BLE  &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_NEXT    &bt BT_NXT
-&trans  &none             &sk RIGHT_ALT  &to 6         &tog 3          &none    &bt BT_CLR    &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2  &bt BT_CLR_ALL  &trans
+        &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_GUI  &kp LEFT_SHIFT  &none    &out OUT_BLE  &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_NEXT    &bt BT_NXT
+&trans  &none             &kp RIGHT_ALT  &to 6         &tog 3          &none    &bt BT_CLR    &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2  &bt BT_CLR_ALL  &trans
                                          &trans        &none           &none    &kp C_STOP    &kp C_PLAY_PAUSE  &kp C_MUTE
             >;
         };
@@ -219,8 +220,8 @@
             label = "num-mac";
             bindings = <
        &kp LEFT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp RIGHT_BRACKET    &none  &to 0           &to 8         &none          &none
-       &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL            &none  &sk LEFT_SHIFT  &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL
-&none  &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH        &none  &tog 4          &to 1         &sk RIGHT_ALT  &none             &none
+       &kp SEMICOLON     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp EQUAL            &none  &kp LEFT_SHIFT  &kp LEFT_GUI  &kp LEFT_ALT   &kp LEFT_CONTROL
+&none  &kp GRAVE         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp BACKSLASH        &none  &tog 4          &to 1         &kp RIGHT_ALT  &none             &none
                                        &kp PERIOD    &kp NUMBER_0  &kp MINUS            &none  &trans          &none
             >;
         };
@@ -229,8 +230,8 @@
             label = "sym-mac";
             bindings = <
        &kp LEFT_BRACE  &kp AMPERSAND    &kp ASTERISK          &kp LEFT_PARENTHESIS   &kp RIGHT_BRACE    &none   &to 0           &to 8         &none          &none
-       &kp COLON       &kp DOLLAR       &kp PERCENT           &kp LCTRL              &kp PLUS           &none   &sk LEFT_SHIFT  &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL
-&none  &kp TILDE       &kp EXCLAMATION  &kp AT_SIGN           &kp POUND              &kp PIPE           &none   &tog 5          &to 2         &sk RIGHT_ALT  &none             &none
+       &kp COLON       &kp DOLLAR       &kp PERCENT           &kp LCTRL              &kp PLUS           &none   &kp LEFT_SHIFT  &kp LEFT_GUI  &kp LEFT_ALT   &kp LEFT_CONTROL
+&none  &kp TILDE       &kp EXCLAMATION  &kp AT_SIGN           &kp POUND              &kp PIPE           &none   &tog 5          &to 2         &kp RIGHT_ALT  &none             &none
                                         &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UNDERSCORE     &trans  &none           &none
             >;
         };
@@ -239,8 +240,8 @@
             label = "FUN-mac";
             bindings = <
         &kp F12  &kp F7  &kp F8      &kp F9     &kp SCROLLLOCK     &none  &to 0           &to 8         &sys_reset     &bootloader
-        &kp F11  &kp F4  &kp F5      &kp F6     &kp SCROLLLOCK     &none  &sk LEFT_SHIFT  &sk LEFT_GUI  &sk LEFT_ALT   &sk LEFT_CONTROL
-&trans  &kp F10  &kp F1  &kp F2      &kp F3     &kp PAUSE_BREAK    &none  &tog 6          &to 3         &sk RIGHT_ALT  &none             &trans
+        &kp F11  &kp F4  &kp F5      &kp F6     &kp SCROLLLOCK     &none  &kp LEFT_SHIFT  &kp LEFT_GUI  &kp LEFT_ALT   &kp LEFT_CONTROL
+&trans  &kp F10  &kp F1  &kp F2      &kp F3     &kp PAUSE_BREAK    &none  &tog 6          &to 3         &kp RIGHT_ALT  &none             &trans
                          &kp ESCAPE  &kp SPACE  &kp TAB            &none  &none           &trans
             >;
         };
