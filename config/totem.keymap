@@ -27,9 +27,9 @@
     quick-tap-ms = <100>;
     global-quick-tap;
     retro-tap;
-    hold-trigger-key-positions = <32 33 34 10 19>;
     require-prior-idle-ms = <150>;
     tapping-term-ms = <175>;
+    flavor = "tap-unless-interrupted";
 };
 
 / {
