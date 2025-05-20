@@ -25,7 +25,8 @@
 
 &mt {
     require-prior-idle-ms = <150>;
-    flavor = "balanced";
+    flavor = "tap-preferred";
+    tapping-term-ms = <175>;
 };
 
 / {
